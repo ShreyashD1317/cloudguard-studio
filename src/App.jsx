@@ -489,6 +489,37 @@ const App = () => {
           </div>
         ))}
       </div>
+      <div className="flex-1 p-16 bg-slate-50 flex flex-col items-center overflow-y-auto">
+        <div className="w-full max-w-[1000px] mb-12 flex justify-between items-end">
+          <h3 className="text-3xl font-black text-slate-900">Architecture Diff</h3>
+          <div className="flex bg-white p-2 rounded-2xl border border-slate-200 text-xs font-black gap-2">
+            <div className="px-5 py-2.5 bg-red-50 text-red-600 rounded-xl">Legacy</div>
+            <div className="px-5 py-2.5 bg-green-50 text-green-600 rounded-xl">Optimized</div>
+          </div>
+        </div>
+        <div className="flex gap-12 items-center w-full max-w-[1000px]">
+          <div className="flex-1 bg-white border rounded-[40px] p-12 h-[500px] opacity-40">
+             <div className="font-mono text-sm space-y-4">
+                <div className="text-slate-800 font-bold underline">vpc-ingress:</div>
+                <div className="pl-4">source: "0.0.0.0/0"</div>
+                <div className="pl-4">ports: ["*"]</div>
+             </div>
+          </div>
+          <ArrowRight size={48} className="text-blue-200" />
+          <div className="flex-1 bg-white border-2 border-blue-600 rounded-[40px] p-12 h-[500px] shadow-2xl">
+             <div className="font-mono text-sm space-y-4">
+                <div className="text-blue-700 font-black">hardened-ingress:</div>
+                <div className="line-through text-slate-300">source: "0.0.0.0/0"</div>
+                <div className="text-green-700 font-bold bg-green-50 px-2 rounded">source: "10.0.0.0/8"</div>
+                <div className="line-through text-slate-300">ports: ["*"]</div>
+                <div className="text-green-700 font-bold bg-green-50 px-2 rounded">ports: ["443", "80"]</div>
+             </div>
+          </div>
+        </div>
+        <button onClick={() => setActiveScreen('Deployment Preview')} className="mt-12 bg-blue-600 text-white px-12 py-6 rounded-[32px] font-black text-2xl shadow-xl hover:bg-blue-700 transition-all">
+          Approve for Deployment
+        </button>
+      </div>
       <div className="flex-1 flex overflow-hidden">
         <div className="w-[480px] border-r border-slate-200 p-8 overflow-y-auto">
           <h3 className="text-lg font-bold text-slate-900 mb-6">Impact Analysis</h3>
